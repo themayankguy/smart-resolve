@@ -1,0 +1,377 @@
+{
+  "model": "RoomThreatGCN (Phase 6.1 Audit)",
+  "provenance": "synthetic_procedural_dungeons",
+  "train_dungeons_count": 120,
+  "test_dungeons_count": 30,
+  "test_rooms_count": 208,
+  "target_class_distribution": {
+    "LOW": 68,
+    "MEDIUM": 68,
+    "HIGH": 72
+  },
+  "majority_baseline_metrics": {
+    "accuracy": 0.3462,
+    "macro_f1": 0.1714,
+    "weighted_f1": 0.178,
+    "macro_precision": 0.1154,
+    "macro_recall": 0.3333,
+    "per_class": {
+      "LOW": {
+        "support": 68,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "MEDIUM": {
+        "support": 68,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "HIGH": {
+        "support": 72,
+        "predicted": 208,
+        "precision": 0.3462,
+        "recall": 1.0,
+        "f1_score": 0.5143
+      }
+    },
+    "confusion_matrix": {
+      "LOW": {
+        "LOW": 0,
+        "MEDIUM": 0,
+        "HIGH": 68
+      },
+      "MEDIUM": {
+        "LOW": 0,
+        "MEDIUM": 0,
+        "HIGH": 68
+      },
+      "HIGH": {
+        "LOW": 0,
+        "MEDIUM": 0,
+        "HIGH": 72
+      }
+    }
+  },
+  "majority_class": "HIGH",
+  "configurations": {
+    "config_a_7feat": {
+      "label": "Config A: Original Schema (7 Features)",
+      "description": "Includes is_spawn and is_exit target-defining flags alongside coordinates and geometry.",
+      "features": [
+        "room_area",
+        "aspect_ratio",
+        "degree",
+        "is_spawn",
+        "is_exit",
+        "norm_center_x",
+        "norm_center_y"
+      ],
+      "gcn_metrics": {
+        "accuracy": 0.7404,
+        "macro_f1": 0.7451,
+        "weighted_f1": 0.746,
+        "macro_precision": 0.7597,
+        "macro_recall": 0.7405,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 61,
+            "precision": 0.8361,
+            "recall": 0.75,
+            "f1_score": 0.7907
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 85,
+            "precision": 0.5882,
+            "recall": 0.7353,
+            "f1_score": 0.6536
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 62,
+            "precision": 0.8548,
+            "recall": 0.7361,
+            "f1_score": 0.791
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 51,
+            "MEDIUM": 16,
+            "HIGH": 1
+          },
+          "MEDIUM": {
+            "LOW": 10,
+            "MEDIUM": 50,
+            "HIGH": 8
+          },
+          "HIGH": {
+            "LOW": 0,
+            "MEDIUM": 19,
+            "HIGH": 53
+          }
+        }
+      },
+      "mlp_metrics": {
+        "accuracy": 0.6298,
+        "macro_f1": 0.6241,
+        "weighted_f1": 0.6264,
+        "macro_precision": 0.6241,
+        "macro_recall": 0.6283,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 79,
+            "precision": 0.6709,
+            "recall": 0.7794,
+            "f1_score": 0.7211
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 63,
+            "precision": 0.4286,
+            "recall": 0.3971,
+            "f1_score": 0.4122
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 66,
+            "precision": 0.7727,
+            "recall": 0.7083,
+            "f1_score": 0.7391
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 53,
+            "MEDIUM": 15,
+            "HIGH": 0
+          },
+          "MEDIUM": {
+            "LOW": 26,
+            "MEDIUM": 27,
+            "HIGH": 15
+          },
+          "HIGH": {
+            "LOW": 0,
+            "MEDIUM": 21,
+            "HIGH": 51
+          }
+        }
+      }
+    },
+    "config_b_5feat": {
+      "label": "Config B: Leakage-Controlled Schema (5 Features)",
+      "description": "Excludes is_spawn and is_exit flags. Retains spatial coordinates and room geometry.",
+      "features": [
+        "room_area",
+        "aspect_ratio",
+        "degree",
+        "norm_center_x",
+        "norm_center_y"
+      ],
+      "gcn_metrics": {
+        "accuracy": 0.4808,
+        "macro_f1": 0.476,
+        "weighted_f1": 0.4761,
+        "macro_precision": 0.4826,
+        "macro_recall": 0.4818,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 90,
+            "precision": 0.4778,
+            "recall": 0.6324,
+            "f1_score": 0.5443
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 61,
+            "precision": 0.4262,
+            "recall": 0.3824,
+            "f1_score": 0.4031
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 57,
+            "precision": 0.5439,
+            "recall": 0.4306,
+            "f1_score": 0.4806
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 43,
+            "MEDIUM": 17,
+            "HIGH": 8
+          },
+          "MEDIUM": {
+            "LOW": 24,
+            "MEDIUM": 26,
+            "HIGH": 18
+          },
+          "HIGH": {
+            "LOW": 23,
+            "MEDIUM": 18,
+            "HIGH": 31
+          }
+        }
+      },
+      "mlp_metrics": {
+        "accuracy": 0.5192,
+        "macro_f1": 0.4855,
+        "weighted_f1": 0.4878,
+        "macro_precision": 0.4785,
+        "macro_recall": 0.5161,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 82,
+            "precision": 0.5854,
+            "recall": 0.7059,
+            "f1_score": 0.64
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 36,
+            "precision": 0.3056,
+            "recall": 0.1618,
+            "f1_score": 0.2115
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 90,
+            "precision": 0.5444,
+            "recall": 0.6806,
+            "f1_score": 0.6049
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 48,
+            "MEDIUM": 9,
+            "HIGH": 11
+          },
+          "MEDIUM": {
+            "LOW": 27,
+            "MEDIUM": 11,
+            "HIGH": 30
+          },
+          "HIGH": {
+            "LOW": 7,
+            "MEDIUM": 16,
+            "HIGH": 49
+          }
+        }
+      }
+    },
+    "config_c_3feat": {
+      "label": "Config C: Pure Structural/Geometric Schema (3 Features)",
+      "description": "Excludes spawn/exit flags and coordinates. Evaluates purely area, aspect ratio, and degree.",
+      "features": [
+        "room_area",
+        "aspect_ratio",
+        "degree"
+      ],
+      "gcn_metrics": {
+        "accuracy": 0.4135,
+        "macro_f1": 0.409,
+        "weighted_f1": 0.408,
+        "macro_precision": 0.4097,
+        "macro_recall": 0.4153,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 84,
+            "precision": 0.4524,
+            "recall": 0.5588,
+            "f1_score": 0.5
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 67,
+            "precision": 0.3731,
+            "recall": 0.3676,
+            "f1_score": 0.3704
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 57,
+            "precision": 0.4035,
+            "recall": 0.3194,
+            "f1_score": 0.3566
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 38,
+            "MEDIUM": 15,
+            "HIGH": 15
+          },
+          "MEDIUM": {
+            "LOW": 24,
+            "MEDIUM": 25,
+            "HIGH": 19
+          },
+          "HIGH": {
+            "LOW": 22,
+            "MEDIUM": 27,
+            "HIGH": 23
+          }
+        }
+      },
+      "mlp_metrics": {
+        "accuracy": 0.4808,
+        "macro_f1": 0.4555,
+        "weighted_f1": 0.4572,
+        "macro_precision": 0.4446,
+        "macro_recall": 0.479,
+        "per_class": {
+          "LOW": {
+            "support": 68,
+            "predicted": 86,
+            "precision": 0.5581,
+            "recall": 0.7059,
+            "f1_score": 0.6234
+          },
+          "MEDIUM": {
+            "support": 68,
+            "predicted": 44,
+            "precision": 0.25,
+            "recall": 0.1618,
+            "f1_score": 0.1964
+          },
+          "HIGH": {
+            "support": 72,
+            "predicted": 78,
+            "precision": 0.5256,
+            "recall": 0.5694,
+            "f1_score": 0.5467
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 48,
+            "MEDIUM": 11,
+            "HIGH": 9
+          },
+          "MEDIUM": {
+            "LOW": 29,
+            "MEDIUM": 11,
+            "HIGH": 28
+          },
+          "HIGH": {
+            "LOW": 9,
+            "MEDIUM": 22,
+            "HIGH": 41
+          }
+        }
+      }
+    }
+  }
+}

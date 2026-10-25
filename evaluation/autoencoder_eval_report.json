@@ -1,0 +1,43 @@
+{
+  "model": "CombatAutoencoder (Phase 4)",
+  "provenance": "synthetic_development",
+  "held_out_normal_windows": 32,
+  "held_out_normal_sessions": 3,
+  "anomalous_windows": 50,
+  "anomalous_sessions": 5,
+  "reconstruction_error_distribution": {
+    "normal_mean": 0.0555,
+    "normal_std": 0.0514,
+    "normal_median": 0.0389,
+    "anomalous_mean": 2129.9875,
+    "anomalous_std": 903.2073,
+    "anomalous_median": 2088.8442,
+    "separation_ratio": 38370.15
+  },
+  "autoencoder_metrics": {
+    "threshold": 0.0966,
+    "accuracy": 0.939,
+    "precision": 0.9091,
+    "recall": 1.0,
+    "f1_score": 0.9524,
+    "confusion_matrix": {
+      "TP": 50,
+      "FP": 5,
+      "TN": 27,
+      "FN": 0
+    }
+  },
+  "baseline_zscore_metrics": {
+    "threshold": 1.5504,
+    "accuracy": 0.9756,
+    "precision": 0.9615,
+    "recall": 1.0,
+    "f1_score": 0.9804,
+    "confusion_matrix": {
+      "TP": 50,
+      "FP": 2,
+      "TN": 30,
+      "FN": 0
+    }
+  }
+}
