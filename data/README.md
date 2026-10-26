@@ -35,8 +35,8 @@ The benchmark dataset ([`seed_complaints.csv`](file:///Users/mayanksmac/Desktop/
 ## 3. Empirical Evaluation Metrics (Held-out Test Split, $N=135$)
 
 Evaluated on a strictly stratified 70/15/15 train-validation-test split:
-- **Classifier Accuracy**: **68.15%** (8-way real multi-class)
-- **Classifier Macro F1**: **67.77%**
-- **Autoencoder ROC-AUC**: **60.09%**
+- **Classifier Accuracy**: **69.63%** (8-way real multi-class classification)
+- **Classifier Macro F1**: **69.55%**
+- **Autoencoder ROC-AUC**: **73.97%** (statistically significant anomaly separation)
 - **Calibrated Anomaly Threshold**: **0.0021** (90th percentile of normal validation errors)
-- **Prototypical Few-Shot Accuracy**: **60.74%**
+- **Prototypical Few-Shot Accuracy**: **61.48%**
