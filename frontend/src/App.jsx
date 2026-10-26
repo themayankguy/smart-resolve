@@ -792,7 +792,14 @@ export default function App() {
                             {t.complaint_text}
                           </td>
                           <td>
-                            <span style={{ fontSize: '0.8125rem', color: '#e2e8f0' }}>{t.category}</span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                              <span style={{ fontSize: '0.8125rem', color: '#e2e8f0' }}>{t.category}</span>
+                              {t.confidence < 0.40 && (
+                                <span className="badge badge-high" style={{ fontSize: '0.625rem', padding: '0.125rem 0.375rem', width: 'fit-content' }}>
+                                  ⚠️ Human Review
+                                </span>
+                              )}
+                            </div>
                           </td>
                           <td>
                             <span className={`badge badge-${t.priority.toLowerCase()}`}>

@@ -329,6 +329,11 @@ class MLEngine:
             is_anomaly=is_anomaly
         )
 
+        if cls_result.get("needs_human_review"):
+            msg = "Low classification confidence (< 40%); flagged for manual human review."
+            if msg not in priority_result["reasons"]:
+                priority_result["reasons"].append(msg)
+
         few_shot_result = self.predict_few_shot(complaint_text)
         department = self.category_dept_map.get(category, "General IT Service Desk")
 
