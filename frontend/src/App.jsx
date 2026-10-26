@@ -8,10 +8,56 @@ import Dashboard from './components/Dashboard.jsx';
 
 const API_BASE = '/api';
 
+const ROLES = {
+  employee: {
+    id: 'employee',
+    label: '👤 Employee / User',
+    portalTitle: 'Employee Self-Service Portal',
+    tabs: [
+      { id: 'submit', label: 'Report Issue', icon: PlusCircle },
+      { id: 'tickets', label: 'My Tickets', icon: ListFilter }
+    ],
+    defaultTab: 'submit'
+  },
+  resolver: {
+    id: 'resolver',
+    label: '🛡️ IT Resolver / Support',
+    portalTitle: 'IT Incident Resolver Console',
+    tabs: [
+      { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+      { id: 'tickets', label: 'Ticket Queue', icon: ListFilter },
+      { id: 'submit', label: 'Log Ticket', icon: PlusCircle }
+    ],
+    defaultTab: 'dashboard'
+  },
+  ml_admin: {
+    id: 'ml_admin',
+    label: '⚙️ ML Admin / Data Scientist',
+    portalTitle: 'AI Core & Administrator Console',
+    tabs: [
+      { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+      { id: 'tickets', label: 'Ticket Queue', icon: ListFilter },
+      { id: 'models', label: 'Model Evaluation', icon: Cpu },
+      { id: 'fewshot', label: 'Few-Shot Studio', icon: Sparkles },
+      { id: 'submit', label: 'Log Ticket', icon: PlusCircle }
+    ],
+    defaultTab: 'dashboard'
+  }
+};
+
 export default function App() {
+  const [currentRole, setCurrentRole] = useState('resolver');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [metrics, setMetrics] = useState(null);
   const [loadingMetrics, setLoadingMetrics] = useState(false);
+
+  const handleRoleChange = (newRole) => {
+    setCurrentRole(newRole);
+    const permittedTabs = ROLES[newRole].tabs.map(t => t.id);
+    if (!permittedTabs.includes(activeTab)) {
+      setActiveTab(ROLES[newRole].defaultTab);
+    }
+  };
 
   // Tickets state
   const [tickets, setTickets] = useState([]);
@@ -362,43 +408,53 @@ export default function App() {
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <nav style={{ display: 'flex', gap: '0.375rem', background: 'rgba(15,23,42,0.6)', padding: '0.3125rem', borderRadius: '0.625rem', border: '1px solid rgba(255,255,255,0.06)' }}>
-            {[
-              { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-              { id: 'submit', label: 'Submit Ticket', icon: PlusCircle },
-              { id: 'tickets', label: 'Ticket Manager', icon: ListFilter },
-              { id: 'models', label: 'Model Evaluation', icon: Cpu },
-              { id: 'fewshot', label: 'Few-Shot Studio', icon: Sparkles }
-            ].map(tab => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.375rem',
-                    padding: '0.5rem 0.875rem',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    borderRadius: '0.5rem',
-                    border: 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    background: isActive ? '#2563eb' : 'transparent',
-                    color: isActive ? '#ffffff' : '#94a3b8',
-                    boxShadow: isActive ? '0 2px 8px rgba(37,99,235,0.4)' : 'none'
-                  }}
-                >
-                  <Icon size={15} />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </nav>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Role Switcher Pill */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(15,23,42,0.85)', padding: '0.3125rem 0.625rem', borderRadius: '0.625rem', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <span style={{ fontSize: '0.6875rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Portal:</span>
+              <select 
+                value={currentRole} 
+                onChange={(e) => handleRoleChange(e.target.value)}
+                style={{ background: 'transparent', color: '#60a5fa', border: 'none', fontSize: '0.8125rem', fontWeight: 700, cursor: 'pointer', outline: 'none' }}
+              >
+                <option value="employee" style={{ background: '#0f172a', color: '#f8fafc' }}>👤 Employee / User</option>
+                <option value="resolver" style={{ background: '#0f172a', color: '#f8fafc' }}>🛡️ IT Resolver / Support</option>
+                <option value="ml_admin" style={{ background: '#0f172a', color: '#f8fafc' }}>⚙️ ML Admin Console</option>
+              </select>
+            </div>
+
+            {/* Navigation Tabs (filtered by active role) */}
+            <nav style={{ display: 'flex', gap: '0.375rem', background: 'rgba(15,23,42,0.6)', padding: '0.3125rem', borderRadius: '0.625rem', border: '1px solid rgba(255,255,255,0.06)' }}>
+              {ROLES[currentRole].tabs.map(tab => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.375rem',
+                      padding: '0.5rem 0.875rem',
+                      fontSize: '0.8125rem',
+                      fontWeight: 600,
+                      borderRadius: '0.5rem',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                      background: isActive ? '#2563eb' : 'transparent',
+                      color: isActive ? '#ffffff' : '#94a3b8',
+                      boxShadow: isActive ? '0 2px 8px rgba(37,99,235,0.4)' : 'none'
+                    }}
+                  >
+                    <Icon size={15} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -1211,91 +1267,135 @@ export default function App() {
             </div>
 
             {/* AI Diagnosis Insights */}
-            <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.5rem', padding: '1rem', marginBottom: '1.25rem', background: 'rgba(30,41,59,0.3)' }}>
-              <h4 style={{ fontSize: '0.875rem', color: '#38bdf8', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
-                <BrainCircuit size={16} /> AI Pipeline Diagnostic Record
-              </h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', fontSize: '0.8125rem' }}>
-                <div>
-                  <span style={{ color: '#94a3b8' }}>Classified Category:</span>
-                  <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.category}</div>
-                  <span style={{ fontSize: '0.75rem', color: '#60a5fa' }}>Confidence: {(selectedTicket.confidence * 100).toFixed(1)}%</span>
-                </div>
-                <div>
-                  <span style={{ color: '#94a3b8' }}>Reconstruction Error:</span>
-                  <div style={{ fontWeight: 600, color: selectedTicket.is_anomaly ? '#f87171' : '#34d399' }}>
-                    {selectedTicket.reconstruction_error}
+            {currentRole === 'employee' ? (
+              <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.5rem', padding: '1rem', marginBottom: '1.25rem', background: 'rgba(30,41,59,0.3)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', fontSize: '0.8125rem' }}>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Classified Category:</span>
+                    <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.category}</div>
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Threshold: {selectedTicket.anomaly_threshold}</span>
-                </div>
-                <div>
-                  <span style={{ color: '#94a3b8' }}>Assigned Group:</span>
-                  <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.department}</div>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Assigned Resolver Group:</span>
+                    <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.department}</div>
+                  </div>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Priority Level:</span>
+                    <div>
+                      <span className={`badge badge-${selectedTicket.priority.toLowerCase()}`}>
+                        {selectedTicket.priority}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {selectedTicket.priority_reasons && selectedTicket.priority_reasons.length > 0 && (
-                <div style={{ marginTop: '0.75rem', fontSize: '0.8125rem' }}>
-                  <span style={{ color: '#94a3b8' }}>Prioritization Rationale:</span>
-                  <ul style={{ paddingLeft: '1.25rem', color: '#cbd5e1', marginTop: '0.25rem' }}>
-                    {selectedTicket.priority_reasons.map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))}
-                  </ul>
+            ) : (
+              <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.5rem', padding: '1rem', marginBottom: '1.25rem', background: 'rgba(30,41,59,0.3)' }}>
+                <h4 style={{ fontSize: '0.875rem', color: '#38bdf8', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                  <BrainCircuit size={16} /> AI Pipeline Diagnostic Record
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', fontSize: '0.8125rem' }}>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Classified Category:</span>
+                    <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.category}</div>
+                    <span style={{ fontSize: '0.75rem', color: '#60a5fa' }}>Confidence: {(selectedTicket.confidence * 100).toFixed(1)}%</span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Reconstruction Error:</span>
+                    <div style={{ fontWeight: 600, color: selectedTicket.is_anomaly ? '#f87171' : '#34d399' }}>
+                      {selectedTicket.reconstruction_error}
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Threshold: {selectedTicket.anomaly_threshold}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#94a3b8' }}>Assigned Group:</span>
+                    <div style={{ fontWeight: 600, color: '#f1f5f9' }}>{selectedTicket.department}</div>
+                  </div>
                 </div>
-              )}
-            </div>
 
-            {/* Editable Management Controls */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
-                  Change Status
-                </label>
-                <select
-                  value={selectedTicket.status}
-                  onChange={(e) => handleUpdateTicket(selectedTicket.ticket_id, { status: e.target.value })}
-                  disabled={isUpdatingTicket}
-                  className="form-select"
-                >
-                  <option value="Open">Open</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Closed">Closed</option>
-                </select>
+                {selectedTicket.priority_reasons && selectedTicket.priority_reasons.length > 0 && (
+                  <div style={{ marginTop: '0.75rem', fontSize: '0.8125rem' }}>
+                    <span style={{ color: '#94a3b8' }}>Prioritization Rationale:</span>
+                    <ul style={{ paddingLeft: '1.25rem', color: '#cbd5e1', marginTop: '0.25rem' }}>
+                      {selectedTicket.priority_reasons.map((r, i) => (
+                        <li key={i}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
+            )}
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
-                  Override Priority
-                </label>
-                <select
-                  value={selectedTicket.priority}
-                  onChange={(e) => handleUpdateTicket(selectedTicket.ticket_id, { priority: e.target.value })}
-                  disabled={isUpdatingTicket}
-                  className="form-select"
-                >
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                  <option value="Critical">Critical</option>
-                </select>
+            {/* Controls based on role */}
+            {currentRole === 'employee' ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.25rem' }}>
+                <div style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(59,130,246,0.25)', padding: '0.875rem', borderRadius: '0.5rem', fontSize: '0.8125rem', color: '#93c5fd' }}>
+                  <strong>Ticket Status:</strong> Your issue is being handled by <strong>{selectedTicket.department}</strong>.
+                </div>
+                {selectedTicket.admin_notes ? (
+                  <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', padding: '0.875rem', borderRadius: '0.5rem' }}>
+                    <span style={{ fontSize: '0.75rem', color: '#34d399', fontWeight: 700, textTransform: 'uppercase' }}>Resolution Notes:</span>
+                    <p style={{ color: '#f8fafc', fontSize: '0.875rem', marginTop: '0.25rem' }}>{selectedTicket.admin_notes}</p>
+                  </div>
+                ) : (
+                  <div style={{ fontSize: '0.8125rem', color: '#94a3b8', fontStyle: 'italic' }}>
+                    No technician notes posted yet. The ticket is currently <strong>{selectedTicket.status}</strong>.
+                  </div>
+                )}
               </div>
-            </div>
+            ) : (
+              <>
+                {/* Editable Management Controls for Resolvers / Admins */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
+                      Change Status
+                    </label>
+                    <select
+                      value={selectedTicket.status}
+                      onChange={(e) => handleUpdateTicket(selectedTicket.ticket_id, { status: e.target.value })}
+                      disabled={isUpdatingTicket}
+                      className="form-select"
+                    >
+                      <option value="Open">Open</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Resolved">Resolved</option>
+                      <option value="Closed">Closed</option>
+                    </select>
+                  </div>
 
-            {/* Admin Resolution Notes */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
-                Resolution / Administrator Notes
-              </label>
-              <textarea
-                rows={3}
-                defaultValue={selectedTicket.admin_notes || ''}
-                onBlur={(e) => handleUpdateTicket(selectedTicket.ticket_id, { admin_notes: e.target.value })}
-                placeholder="Enter technician notes, diagnostic updates, or resolution confirmation..."
-                className="form-textarea"
-              />
-            </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
+                      Override Priority
+                    </label>
+                    <select
+                      value={selectedTicket.priority}
+                      onChange={(e) => handleUpdateTicket(selectedTicket.ticket_id, { priority: e.target.value })}
+                      disabled={isUpdatingTicket}
+                      className="form-select"
+                    >
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                      <option value="Critical">Critical</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Admin Resolution Notes */}
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.25rem' }}>
+                    Resolution / Administrator Notes
+                  </label>
+                  <textarea
+                    rows={3}
+                    defaultValue={selectedTicket.admin_notes || ''}
+                    onBlur={(e) => handleUpdateTicket(selectedTicket.ticket_id, { admin_notes: e.target.value })}
+                    placeholder="Enter technician notes, diagnostic updates, or resolution confirmation..."
+                    className="form-textarea"
+                  />
+                </div>
+              </>
+            )}
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
               <button
