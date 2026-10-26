@@ -60,7 +60,7 @@ class MLEngine:
         self.classifier: Optional[LogisticRegression] = None
         self.autoencoder: Optional[EmbeddingAutoencoder] = None
         self.classes_: List[str] = []
-        self.anomaly_threshold: float = 0.45
+        self.anomaly_threshold: float = 0.0036
         self.is_ae_calibrated: bool = False
         self.prototypes: Dict[str, np.ndarray] = {}
         self.support_examples: Dict[str, List[str]] = {}
@@ -469,9 +469,9 @@ class MLEngine:
             normal_val_mask = is_normal_val == 1
             if np.any(normal_val_mask):
                 val_normal_mse = val_mse[normal_val_mask]
-                threshold = float(np.percentile(val_normal_mse, 90) + 0.0005)
+                threshold = float(max(0.0036, float(np.percentile(val_normal_mse, 98) + 0.0015)))
             else:
-                threshold = float(np.percentile(val_mse, 85))
+                threshold = 0.0036
 
             # Test split evaluation for anomaly detector
             test_tensor = torch.tensor(X_test, dtype=torch.float32)
