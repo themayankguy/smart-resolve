@@ -378,8 +378,12 @@ class MLEngine:
 
         # Train / Val / Test split: 70% / 15% / 15%
         indices = np.arange(len(records))
-        train_val_idx, test_idx = train_test_split(indices, test_size=0.15, random_state=random_seed)
-        train_idx, val_idx = train_test_split(train_val_idx, test_size=0.1765, random_state=random_seed) # ~15% of total
+        try:
+            train_val_idx, test_idx = train_test_split(indices, test_size=0.15, stratify=y, random_state=random_seed)
+            train_idx, val_idx = train_test_split(train_val_idx, test_size=0.1765, stratify=y[train_val_idx], random_state=random_seed)
+        except Exception:
+            train_val_idx, test_idx = train_test_split(indices, test_size=0.15, random_state=random_seed)
+            train_idx, val_idx = train_test_split(train_val_idx, test_size=0.1765, random_state=random_seed)
 
         X_train, y_train = X[train_idx], y[train_idx]
         X_val, y_val = X[val_idx], y[val_idx]
@@ -390,7 +394,7 @@ class MLEngine:
         is_normal_test = is_normals[test_idx]
 
         # --- A. Train Classifier ---
-        clf = LogisticRegression(max_iter=500, C=1.0, random_state=random_seed)
+        clf = LogisticRegression(max_iter=1000, C=2.5, class_weight='balanced', random_state=random_seed)
         clf.fit(X_train, y_train)
         
         # Test evaluation

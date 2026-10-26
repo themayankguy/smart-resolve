@@ -1,5 +1,5 @@
 complaint_text,category,is_normal,priority,impact
-"Wi-Fi keeps dropping every 5 minutes in the conference room 3B.",Network and Wi-Fi,1,Medium,Department
+"Wi-Fi keeps dropping every 5 minutes in conference room 3B during presentations.",Network and Wi-Fi,1,Medium,Department
 "Unable to connect to the corporate VPN from home network after yesterday's update.",Network and Wi-Fi,1,High,Individual
 "Ethernet port at workstation desk 14 is dead and has no link lights.",Network and Wi-Fi,1,Low,Individual
 "The entire 4th floor has lost internet connectivity; all switches appear disconnected.",Network and Wi-Fi,1,Critical,Enterprise
@@ -9,6 +9,18 @@ complaint_text,category,is_normal,priority,impact
 "Frequent packet loss and latency spikes during internal video conferencing calls.",Network and Wi-Fi,1,Medium,Department
 "Core router in Server Room B is showing amber fault LED and packet drops.",Network and Wi-Fi,1,Critical,Enterprise
 "Static IP address conflict error appearing on multiple engineering desktop workstations.",Network and Wi-Fi,1,High,Department
+"Wi-Fi connection drops in training room every time the microwave in cafeteria runs.",Network and Wi-Fi,1,Low,Department
+"Unable to access remote desktop RDP over network subnet 192.168.14.0/24.",Network and Wi-Fi,1,High,Department
+"Network speed test shows 0.5 Mbps download on Gigabit leased line connection.",Network and Wi-Fi,1,High,Enterprise
+"Cisco Catalyst access switch in rack 4 rebooted unexpectedly causing floor outage.",Network and Wi-Fi,1,Critical,Enterprise
+"Subnet gateway 10.20.4.1 unreachable, preventing field engineers from uploading telemetry.",Network and Wi-Fi,1,High,Department
+"Unable to renew DHCP IP lease on wireless connection, assigning 169.254 APIPA address.",Network and Wi-Fi,1,Medium,Individual
+"Fiber optic transceiver fault detected on uplink between Block A and Central Data Center.",Network and Wi-Fi,1,Critical,Enterprise
+"Guest portal captive webpage not loading on mobile devices connected to visitors Wi-Fi.",Network and Wi-Fi,1,Low,Individual
+"Firewall blocking SSH port 22 traffic required for remote server configuration.",Network and Wi-Fi,1,Medium,Department
+"High ping latency and jitter on Voice over IP network causing dropped customer calls.",Network and Wi-Fi,1,High,Department
+"Bandwidth saturation detected on primary WAN link due to unthrottled backup synchronization.",Network and Wi-Fi,1,High,Enterprise
+"VLAN 30 configuration missing on new floor switch port, cannot reach SCADA network.",Network and Wi-Fi,1,High,Department
 "Laptop screen started flickering violently and shows vertical green lines.",Hardware,1,Medium,Individual
 "Desktop computer in billing department won't turn on, no fan noise or power LED.",Hardware,1,High,Individual
 "Office laptop battery swelling noticeably and causing trackpad to pop out.",Hardware,1,Critical,Individual
@@ -19,6 +31,18 @@ complaint_text,category,is_normal,priority,impact
 "Power supply adapter for Lenovo ThinkPad burned out with plastic odor.",Hardware,1,Medium,Individual
 "Server rack thermal sensor sounding alarm due to failed secondary intake fan.",Hardware,1,Critical,Department
 "Ergonomic dual-monitor mounting arm loose and dropping screens onto desk.",Hardware,1,Low,Individual
+"Laptop motherboard fried after coffee spill, device completely unresponsive.",Hardware,1,High,Individual
+"Cooling fan on graphics card making deafening grinding sound.",Hardware,1,Low,Individual
+"CPU overheating to 98C causing workstation to shut down under engineering simulation load.",Hardware,1,High,Individual
+"Network interface card (NIC) hardware failure on local domain controller backup host.",Hardware,1,Critical,Enterprise
+"Docking station USB Type-C port physically loose and disconnecting peripherals on movement.",Hardware,1,Low,Individual
+"Workstation chassis power button stuck in pressed state, preventing boot sequence.",Hardware,1,Low,Individual
+"Solid State Drive SMART health warning: 94 percent bad blocks detected, failure imminent.",Hardware,1,High,Individual
+"Webcam internal ribbon cable damaged, image displays inverted colors and static.",Hardware,1,Low,Individual
+"Uninterruptible Power Supply (UPS) battery failed self-test and emits continuous beep.",Hardware,1,High,Department
+"Laptop touchpad register phantom clicks and mouse cursor jumps across screen.",Hardware,1,Low,Individual
+"RAID controller card failure on department shared file storage server.",Hardware,1,Critical,Department
+"Projector bulb blown in auditorium during executive townhall preparation.",Hardware,1,High,Enterprise
 "ERP SAP client crashes immediately upon launching billing invoice module.",Software and Application,1,High,Department
 "Microsoft Excel crashes whenever opening macro-enabled sheets with run-time error 1004.",Software and Application,1,Medium,Individual
 "Antivirus software definition update stuck at 99% and hogging 100% CPU usage.",Software and Application,1,Medium,Individual
@@ -29,6 +53,18 @@ complaint_text,category,is_normal,priority,impact
 "Zoom desktop app audio driver missing and microphone input not recognized.",Software and Application,1,Low,Individual
 "Document archiving system hangs when trying to preview PDF files larger than 10MB.",Software and Application,1,Medium,Department
 "Database management studio unable to connect to staging replica instance.",Software and Application,1,High,Department
+"Web portal session expires immediately every 30 seconds forcing re-login.",Software and Application,1,Medium,Individual
+"PowerBI desktop report fails to refresh dataset with OLE DB provider error.",Software and Application,1,Medium,Individual
+"Git client throwing SSL certificate verification failed when pushing to internal GitLab.",Software and Application,1,Medium,Department
+"Engineering GIS mapping application throwing out of memory exception during raster export.",Software and Application,1,High,Individual
+"Accounting tally software company file locked by ghost user session that cannot be kicked.",Software and Application,1,Medium,Department
+"Java runtime version mismatch preventing launch of legacy power telemetry applet.",Software and Application,1,High,Department
+"Docker daemon fails to start on development machine after Windows WSL2 update.",Software and Application,1,Medium,Individual
+"Human resource portal leaves candidate onboarding forms frozen on submit button.",Software and Application,1,High,Individual
+"Inventory tracking barcode software failing to parse newly formatted CSV batch manifests.",Software and Application,1,Medium,Department
+"PDF signing utility showing cryptographic token DLL initialization failure.",Software and Application,1,Medium,Individual
+"Electronic medical reimbursement claims module throwing database deadlock error.",Software and Application,1,High,Department
+"SCADA monitoring desktop application UI freezes when rendering live grid frequency graph.",Software and Application,1,Critical,Enterprise
 "Account locked out after entering password incorrectly on Active Directory portal.",Account and Authentication,1,Medium,Individual
 "Single Sign-On (SSO) Okta login loop redirecting back to login screen continuously.",Account and Authentication,1,High,Enterprise
 "Need password reset for my domain user account after returning from medical leave.",Account and Authentication,1,Low,Individual
@@ -39,6 +75,18 @@ complaint_text,category,is_normal,priority,impact
 "Admin rights temporary elevation required to install PowerBI desktop drivers.",Account and Authentication,1,Low,Individual
 "Locked out of administrator account on test staging cluster server.",Account and Authentication,1,High,Department
 "Expired security certificate preventing login to employee self-service portal.",Account and Authentication,1,High,Enterprise
+"Biometric attendance fingerprint machine rejecting employee ID scan.",Account and Authentication,1,High,Department
+"Microsoft Authenticator push notifications failing to prompt on mobile device.",Account and Authentication,1,Medium,Individual
+"User transferred from Southern Region to Northern Region, please update Active Directory OU.",Account and Authentication,1,Low,Individual
+"Kerberos ticket renewal failure breaking access to internal Linux cluster nodes.",Account and Authentication,1,High,Department
+"Security token expired error appearing every time user attempts to approve expense claims.",Account and Authentication,1,Medium,Individual
+"Contractor account expired yesterday, please grant two-week access extension.",Account and Authentication,1,Medium,Individual
+"Password change page giving complexity error even when special characters and numbers are used.",Account and Authentication,1,Low,Individual
+"Service account credentials for automated nightly report generation need password rotation.",Account and Authentication,1,Medium,Department
+"Unable to access HR portal due to missing two-factor hardware YubiKey token.",Account and Authentication,1,Medium,Individual
+"Shared drive access rights revoked accidentally after department reorganization.",Account and Authentication,1,High,Department
+"Domain account locked out repeatedly every 15 minutes without any active user login attempts.",Account and Authentication,1,High,Individual
+"Root password for secondary disaster recovery backup server needs secure reset.",Account and Authentication,1,Critical,Enterprise
 "Outlook client disconnected from Microsoft Exchange server and won't send emails.",Email and Communication,1,High,Department
 "Unable to send outbound emails with attachments larger than 5MB to external clients.",Email and Communication,1,Medium,Individual
 "Shared department mailbox finance-queries@powergrid.in is not syncing new emails.",Email and Communication,1,High,Department
@@ -49,6 +97,18 @@ complaint_text,category,is_normal,priority,impact
 "Encrypted email message cannot be decrypted due to missing private S/MIME key.",Email and Communication,1,Medium,Individual
 "Incoming emails from domain gov.in are getting bounced with error 550 Relay Denied.",Email and Communication,1,Critical,Enterprise
 "Voice call echo and distortion on Cisco IP desk phone terminal extension 4402.",Email and Communication,1,Low,Individual
+"Email attachments automatically stripped by mail gateway with message policy block.",Email and Communication,1,Medium,Department
+"Cannot create recurring meeting invite in Outlook calendar, error meeting not found.",Email and Communication,1,Low,Individual
+"Company announcement email blast stuck in outgoing Exchange transport queue.",Email and Communication,1,High,Enterprise
+"Automatic out-of-office autoreply failed to trigger while employee was on leave.",Email and Communication,1,Low,Individual
+"Conference room SIP IP speakerphone unable to dial external numbers for client call.",Email and Communication,1,Medium,Department
+"Email signature template HTML formatting scrambled across mobile email apps.",Email and Communication,1,Low,Individual
+"Phishing warning banner appearing erroneously on legitimate internal executive memos.",Email and Communication,1,Medium,Department
+"Emails sent to yahoo.com and hotmail.com failing DKIM SPF authentication checks.",Email and Communication,1,High,Enterprise
+"Shared calendar permissions not updating after manager granted delegate access.",Email and Communication,1,Low,Individual
+"Cisco Webex meeting audio cuts out completely after 20 minutes on conference room codec.",Email and Communication,1,Medium,Department
+"Exchange ActiveSync not synchronizing company emails to corporate iPhone.",Email and Communication,1,Medium,Individual
+"Mass email newsletter rejected by recipient mail servers due to PTR reverse DNS lookup failure.",Email and Communication,1,High,Department
 "Network laser printer HP LaserJet 400 paper jam error won't clear after opening tray.",Printer and Peripheral,1,Low,Department
 "Printer in Accounts printing black streaks and illegible faded text on checks.",Printer and Peripheral,1,Medium,Department
 "Barcode scanner at warehouse intake dock not transmitting scanned codes to terminal.",Printer and Peripheral,1,High,Department
@@ -56,9 +116,21 @@ complaint_text,category,is_normal,priority,impact
 "Flatbed scanner driver missing on Windows 11 workstation, scanning software disabled.",Printer and Peripheral,1,Low,Individual
 "Label printer queue jammed with 45 pending print jobs that cannot be cancelled.",Printer and Peripheral,1,Medium,Department
 "Thermal receipt printer smoking slightly and emitting burnt chemical smell.",Printer and Peripheral,1,Critical,Department
-"Cannot map shared network printer \\\\print-srv01\\PRT-3RD-FLOOR on laptop.",Printer and Peripheral,1,Low,Individual
+"Cannot map shared network printer \\print-srv01\\PRT-3RD-FLOOR on laptop.",Printer and Peripheral,1,Low,Individual
 "Conference room projector displaying no input signal via wall HDMI jack.",Printer and Peripheral,1,Medium,Department
 "Heavy duty plotter paper cutter blade misaligned, tearing blueprints.",Printer and Peripheral,1,Low,Department
+"Plotter out of roll paper and showing cyan cartridge empty alert.",Printer and Peripheral,1,Low,Department
+"Zebra industrial label printer printing faint unreadable shipping barcodes.",Printer and Peripheral,1,Medium,Department
+"Department scanner feeder grabbing multiple sheets simultaneously causing constant jams.",Printer and Peripheral,1,Low,Department
+"Network printer spooler service on print server crashing repeatedly.",Printer and Peripheral,1,High,Enterprise
+"Wireless presentation clicker USB dongle missing in executive conference room.",Printer and Peripheral,1,Low,Department
+"Office photocopier displaying error E000001-0001 fixing unit temperature error.",Printer and Peripheral,1,High,Department
+"ID card printer ribbon snapped and adhered to heated transfer roller.",Printer and Peripheral,1,Medium,Department
+"Document duplex unit on Xerox multifunction printer failing to flip double-sided pages.",Printer and Peripheral,1,Low,Department
+"Magnetic swipe card reader at cafeteria point-of-sale terminal failing to read cards.",Printer and Peripheral,1,Medium,Department
+"Wide-format engineering blueprint scanner throwing sensor calibration failed error.",Printer and Peripheral,1,Medium,Department
+"Interactive smartboard touch overlay unresponsive to pen inputs in training lab.",Printer and Peripheral,1,Medium,Department
+"Laser printer producing constant paper pickup roller squeal on tray 2.",Printer and Peripheral,1,Low,Department
 "Received suspicious email purporting to be from CEO asking for urgent gift card purchase.",Security Incident,1,Critical,Enterprise
 "Workstation files suddenly renamed with .locked extension and a ransom note displayed.",Security Incident,1,Critical,Enterprise
 "Antivirus alert: Trojan horse detected and quarantined in C:\\Users\\Public\\temp.exe.",Security Incident,1,High,Individual
@@ -69,6 +141,18 @@ complaint_text,category,is_normal,priority,impact
 "Firewall detected port scanning and unusual outbound traffic on port 4444.",Security Incident,1,Critical,Enterprise
 "Suspicious scheduled task created on domain controller server without admin change log.",Security Incident,1,Critical,Enterprise
 "Browser popups demanding immediate call to fake tech support hotline 1-800 number.",Security Incident,1,Medium,Individual
+"Ransomware decryptor popup appeared on accounting backup NAS drive.",Security Incident,1,Critical,Enterprise
+"Compromised user account sending spam emails to external vendor distribution lists.",Security Incident,1,High,Enterprise
+"Endpoint detection and response (EDR) flagged unauthorized Mimikatz credential dumping tool.",Security Incident,1,Critical,Enterprise
+"Suspicious PowerShell script executing hidden encoded commands in background process.",Security Incident,1,Critical,Enterprise
+"Unauthorized rogue wireless access point broadcasting SSID Corporate-Free detected in lobby.",Security Incident,1,High,Department
+"Sensitive customer financial records uploaded to unauthorized public cloud storage bucket.",Security Incident,1,Critical,Enterprise
+"Cryptocurrency mining malware detected running on idling engineering cluster machines.",Security Incident,1,High,Department
+"DDoS attack overwhelming external DNS servers and public power grid consumer portal.",Security Incident,1,Critical,Enterprise
+"Keylogger hardware device found plugged between keyboard and executive workstation PC.",Security Incident,1,Critical,Individual
+"Security alert: Multiple failed SSH brute force logins on substation SCADA firewall.",Security Incident,1,Critical,Enterprise
+"Internal database credentials published inadvertently on public GitHub code repository.",Security Incident,1,Critical,Enterprise
+"Ransomware warning note dropped in root directory of production SQL database cluster.",Security Incident,1,Critical,Enterprise
 "Requesting requisition for ergonomic footrest and monitor cleaning solution.",Other / Unknown,1,Low,Individual
 "Where can I find the holiday calendar schedule for the upcoming fiscal year?",Other / Unknown,1,Low,Individual
 "Air conditioning in electrical sub-station control room 12 blowing warm air.",Other / Unknown,1,Medium,Department
@@ -79,16 +163,18 @@ complaint_text,category,is_normal,priority,impact
 "Requesting water dispenser refill and paper cups on floor 2 pantry.",Other / Unknown,1,Low,Department
 "Inquiry regarding cafeteria food menu subsidy guidelines for night shift staff.",Other / Unknown,1,Low,Individual
 "Who is the authorized signatory for vendor vendor vendor confidentiality agreements?",Other / Unknown,1,Low,Individual
-"Wi-Fi connection drops in training room every time the microwave in cafeteria runs.",Network and Wi-Fi,1,Low,Department
-"Unable to access remote desktop RDP over network subnet 192.168.14.0/24.",Network and Wi-Fi,1,High,Department
-"Network speed test shows 0.5 Mbps download on Gigabit leased line connection.",Network and Wi-Fi,1,High,Enterprise
-"Laptop motherboard fried after coffee spill, device completely unresponsive.",Hardware,1,High,Individual
-"Cooling fan on graphics card making deafening grinding sound.",Hardware,1,Low,Individual
-"Web portal session expires immediately every 30 seconds forcing re-login.",Software and Application,1,Medium,Individual
-"Biometric attendance fingerprint machine rejecting employee ID scan.",Account and Authentication,1,High,Department
-"Email attachments automatically stripped by mail gateway with message policy block.",Email and Communication,1,Medium,Department
-"Plotter out of roll paper and showing cyan cartridge empty alert.",Printer and Peripheral,1,Low,Department
-"Ransomware decryptor popup appeared on accounting backup NAS drive.",Security Incident,1,Critical,Enterprise
+"Pest control fumigation schedule inquiry for building basement parking.",Other / Unknown,1,Low,Department
+"Request for office desk relocation from 3rd floor west wing to 2nd floor east wing.",Other / Unknown,1,Low,Individual
+"Fire extinguisher annual maintenance inspection stamp expired in corridor B.",Other / Unknown,1,High,Department
+"Lost and found: blue umbrellas and sunglasses left in main auditorium.",Other / Unknown,1,Low,Individual
+"Requesting courier pickup for signed government ministry contract documents.",Other / Unknown,1,Low,Individual
+"Cafeteria coffee vending machine dispensing plain hot water without coffee powder.",Other / Unknown,1,Low,Department
+"Window blind cord broken and stuck halfway down in conference room 1A.",Other / Unknown,1,Low,Individual
+"Request for visitor parking pass allocation for external audit team next Monday.",Other / Unknown,1,Low,Individual
+"Request for company logo branded stationery notepads and ballpoint pens.",Other / Unknown,1,Low,Individual
+"Facility management team please clean spilled beverage near corridor water cooler.",Other / Unknown,1,Low,Department
+"Notice board glass frame cracked and posing hazard near stairwell exit.",Other / Unknown,1,Low,Department
+"Requesting annual leave policy document clarification regarding compensatory off.",Other / Unknown,1,Low,Individual
 "01010001 01110101 01100101 01110010 01111001 00100000 01100101 01110010 01110010 01101111 01110010 00100001",Other / Unknown,0,Low,Individual
 "SYSTEM_FAULT_0x0000F4892_MEM_DUMP_CORRUPT_NULL_PTR_EXCEPTION_UNHANDLED",Other / Unknown,0,Low,Individual
 "asdkjhasdf98712398471239847!@#$!@#$!@#$ gibberish complaint injected lorem ipsum dolor sit amet",Other / Unknown,0,Low,Individual
@@ -99,3 +185,8 @@ complaint_text,category,is_normal,priority,impact
 "Quantum entanglement telemetry sensor voltage fluctuation recorded at 984.2 GHz frequency band.",Other / Unknown,0,Medium,Individual
 "The cafeteria chef ran out of tomatoes for lunch sandwiches today.",Other / Unknown,0,Low,Individual
 "Alien broadcast intercepted on radio telescope frequency channel 7 please confirm encryption protocol.",Other / Unknown,0,Low,Individual
+"Hex dump 48656c6c6f20576f726c6420546573740000ff00ff00ff invalid packet protocol segment.",Other / Unknown,0,Low,Individual
+"Base64 stream: dW5hdXRob3JpemVkIHJhbmRvbSBiaW5hcnkgY29udGVudCBpbiB0aWNrZXQgaW5wdXQ=",Other / Unknown,0,Low,Individual
+"Subterranean mole burrowing activity detected beneath electrical substation concrete slab.",Other / Unknown,0,Medium,Department
+"Ghost sighting reported by night guard near 400kV transformer switchyard.",Other / Unknown,0,Low,Individual
+"Ancient hieroglyphic tablet translation requested for executive office decor verification.",Other / Unknown,0,Low,Individual
