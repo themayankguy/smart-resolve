@@ -1,0 +1,21 @@
+{
+  "system": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "python_version": "3.13.5",
+    "torch_version": "2.11.0",
+    "transformers_embedder": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_dimension": 384
+  },
+  "hyperparameters": {
+    "classifier_solver": "lbfgs",
+    "classifier_C": 2.0,
+    "classifier_class_weight": "balanced",
+    "autoencoder_epochs": 40,
+    "autoencoder_batch_size": 16,
+    "autoencoder_lr": 0.001,
+    "autoencoder_weight_decay": 0.0001,
+    "autoencoder_threshold_percentile": 90
+  },
+  "random_seed": 42
+}

@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-10-26T15:24:15Z",
+  "dataset_total_samples": 900,
+  "dataset_classes_count": 8,
+  "dataset_splits": {
+    "train": 629,
+    "val": 136,
+    "test": 135
+  },
+  "baseline_comparison": {
+    "tfidf_logistic_regression": {
+      "accuracy": 0.6444,
+      "macro_f1": 0.6384
+    },
+    "sbert_logistic_regression": {
+      "accuracy": 0.6963,
+      "macro_f1": 0.6963,
+      "improvement_over_baseline_pct": 5.19
+    }
+  },
+  "autoencoder_anomaly_detection": {
+    "latent_dimension": 32,
+    "calibrated_threshold": 0.0018,
+    "roc_auc": 0.7621,
+    "pr_auc": 0.5022,
+    "precision": 0.375,
+    "recall": 0.4286,
+    "f1_score": 0.4,
+    "false_positive_rate": 0.0826,
+    "normal_test_count": 121,
+    "anomaly_test_count": 14
+  },
+  "few_shot_prototypical_evaluation": [
+    {
+      "k_shots": 1,
+      "mean_accuracy": 0.2948,
+      "std_accuracy": 0.0349,
+      "macro_f1": 0.2801,
+      "test_samples": 135
+    },
+    {
+      "k_shots": 3,
+      "mean_accuracy": 0.417,
+      "std_accuracy": 0.0378,
+      "macro_f1": 0.412,
+      "test_samples": 135
+    },
+    {
+      "k_shots": 5,
+      "mean_accuracy": 0.4481,
+      "std_accuracy": 0.0381,
+      "macro_f1": 0.4451,
+      "test_samples": 135
+    }
+  ],
+  "latency_benchmarks": {
+    "embedding_latency_ms": {
+      "mean": 5.72,
+      "median": 5.14,
+      "p95": 7.64
+    },
+    "classification_latency_ms": {
+      "mean": 0.09,
+      "median": 0.07,
+      "p95": 0.11
+    },
+    "autoencoder_latency_ms": {
+      "mean": 0.12,
+      "median": 0.1,
+      "p95": 0.15
+    },
+    "end_to_end_inference_latency_ms": {
+      "mean": 5.93,
+      "median": 5.29,
+      "p95": 7.83
+    }
+  }
+}
