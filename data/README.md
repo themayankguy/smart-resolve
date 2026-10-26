@@ -7,7 +7,7 @@ This directory contains the dataset, ingestion pipeline, and empirical research 
 ## 1. Primary Dataset Source & Citation
 
 The training and evaluation benchmark is extracted from the real-world **Customer IT Support - Ticket Dataset** released by Tobias Bueck on Kaggle and Hugging Face:
-- **Kaggle Source**: [Customer IT Support - Ticket Dataset](https://www.kaggle.com/datasets/tobiasbueck/customer-it-support-ticket-dataset)
+- **Kaggle Source**: [Ticketsystem/Helpdesk - Customer Support Tickets](https://www.kaggle.com/datasets/tobiasbueck/ticketsystemhelpdesk-customer-support-tickets)
 - **Hugging Face Repository**: [`Tobi-Bueck/customer-support-tickets`](https://huggingface.co/datasets/Tobi-Bueck/customer-support-tickets)
 - **Data Ingestion Script**: [`data/ingest_real_dataset.py`](file:///Users/mayanksmac/Desktop/atml2/data/ingest_real_dataset.py)
 
